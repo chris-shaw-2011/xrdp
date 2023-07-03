@@ -160,6 +160,11 @@ MAIN VIEW - NV12
     ...
     0E 0E 2E 2E 4E 4E 6E 6E 8E 8E AE AE CE CE EE EE
 */
+/*
+    TODO: This appears to be identical to g_fs_rgb_to_yuv420.
+    Keeping this now because this is a dev prototype, but we might
+    want to remove this in the future.
+*/ 
 static const GLchar g_fs_rgb_to_yuv420_mv[] = "\
 uniform sampler2D tex;\n\
 uniform vec2 tex_size;\n\
@@ -186,13 +191,21 @@ void main(void)\n\
         if (mod(x, 2.0) < 1.0)\n\
         {\n\
             pix = texture2D(tex, vec2(x, y) / tex_size);\n\
+            pix += texture2D(tex, vec2(x + 1.0, y) / tex_size);\n\
+            pix += texture2D(tex, vec2(x, y + 1.0) / tex_size);\n\
+            pix += texture2D(tex, vec2(x + 1.0, y + 1.0) / tex_size);\n\
+            pix /= 4.0;\n\
             pix.a = 1.0;\n\
             pix = vec4(clamp(dot(umath, pix), 0.0, 1.0), 0.0, 0.0, 1.0);\n\
             gl_FragColor = pix;\n\
         }\n\
         else\n\
         {\n\
-            pix = texture2D(tex, vec2(x - 1.0, y) / tex_size);\n\
+            pix = texture2D(tex, vec2(x, y) / tex_size);\n\
+            pix += texture2D(tex, vec2(x - 1.0, y) / tex_size);\n\
+            pix += texture2D(tex, vec2(x, y + 1.0) / tex_size);\n\
+            pix += texture2D(tex, vec2(x - 1.0, y + 1.0) / tex_size);\n\
+            pix /= 4.0;\n\
             pix.a = 1.0;\n\
             pix = vec4(clamp(dot(vmath, pix), 0.0, 1.0), 0.0, 0.0, 1.0);\n\
             gl_FragColor = pix;\n\
