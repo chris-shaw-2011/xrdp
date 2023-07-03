@@ -187,6 +187,10 @@ AC_ARG_ENABLE(x264, AS_HELP_STRING([--enable-x264],
               [Use x264 library (default: no)]),
               [], [enable_x264=no])
 AM_CONDITIONAL(XRDP_X264, [test x$enable_x264 = xyes])
+AC_ARG_ENABLE(avc444, AS_HELP_STRING([--enable-avc444],
+              [Enable AVC444 mode if X264 is enabled.]),
+              [], [enable_avc444=no])
+AM_CONDITIONAL(XRDP_AVC444, [test x$enable_avc444 = xyes])
 
 AC_ARG_ENABLE(painter, AS_HELP_STRING([--disable-painter],
               [Do not use included painter library (default: no)]),
@@ -665,6 +669,7 @@ echo "  rfxcodec                $enable_rfxcodec"
 echo "  nvenc                   $enable_nvenc"
 echo "  yami                    $enable_yami"
 echo "  x264                    $enable_x264"
+echo "  avc444                  $enable_avc444"
 echo "  painter                 $enable_painter"
 echo "  pixman                  $enable_pixman"
 echo "  fuse                    $enable_fuse"

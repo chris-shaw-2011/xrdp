@@ -573,8 +573,6 @@ static int n_save_data(const char *data, int data_size, int width, int height)
 
 #if defined(XRDP_X264)
 
-#define AVC444 0
-
 /*****************************************************************************/
 static int
 build_rfx_avc420_metablock(struct stream *s, short *rrects, int rcount,
@@ -622,7 +620,7 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
     int cx;
     int cy;
     int out_data_bytes;
-#if AVC444
+#if XRDP_AVC444
     int out_data_bytes1;
 #endif
     int rcount;
@@ -637,7 +635,7 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
     struct stream ls;
     struct stream *s;
     int comp_bytes_pre;
-#if AVC444
+#if XRDP_AVC444
     int comp_bytes_pre1;
 #endif
     int enc_done_flags;
@@ -678,14 +676,14 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
     ls.p = ls.data;
     ls.size = out_data_alloc_size;
 
-#if AVC444
+#if XRDP_AVC444
     out_data_bytes1 = 0;
     comp_bytes_pre1 = 0;
 #endif
 
     if (self->gfx)
     {
-#if AVC444
+#if XRDP_AVC444
         /* size of avc420EncodedBitmapstream1 */
         s_push_layer(s, mcs_hdr, 4);
 #endif
@@ -757,7 +755,7 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
         return 0;
     }
 
-#if AVC444
+#if XRDP_AVC444
 
     s->p += out_data_bytes;
 
@@ -805,7 +803,7 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
     {
         return 0;
     }
-#if AVC444
+#if XRDP_AVC444
     enc_done->comp_bytes = 4 + comp_bytes_pre
         + out_data_bytes
         + comp_bytes_pre1
