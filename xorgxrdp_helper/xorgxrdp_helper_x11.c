@@ -703,30 +703,19 @@ xorgxrdp_helper_x11_create_pixmap(int width, int height, int magic,
 }
 
 /*****************************************************************************/
-enum encoder_result
-xorgxrdp_helper_x11_encode_pixmap(int width, int height, int mon_id,
-                                  int num_crects, struct xh_rect *crects,
-                                  void *cdata, int *cdata_bytes)
+static void
+xorgxrdp_helper_x11_run_shader(int width, int height,
+                               struct mon_info *mi,
+                               struct shader_info *si,
+                               int num_crects, struct xh_rect *crects)
 {
-    struct mon_info *mi;
-    struct shader_info *si;
-    enum encoder_result rv;
     GLuint vao;
     GLuint vbo;
     GLfloat *vertices;
     GLuint vertices_bytes;
     GLuint vertices_pointes;
 
-    mi = g_mons + mon_id % MAX_MON;
-    if ((width != mi->width) || (height != mi->height))
-    {
-        LOG(LOG_LEVEL_ERROR, "error width %d should be %d "
-            "height %d should be %d",
-            width, mi->width, height, mi->height);
-        return ENCODER_ERROR;
-    }
     /* rgb to yuv */
-    si = g_si + mi->tex_format % XH_NUM_SHADERS;
     glEnable(GL_TEXTURE_2D);
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, mi->bmp_texture);
@@ -742,7 +731,7 @@ xorgxrdp_helper_x11_encode_pixmap(int width, int height, int mon_id,
     {
         LOG(LOG_LEVEL_ERROR, "error get_vertices failed num_crects %d",
             num_crects);
-        return ENCODER_ERROR;
+        return;
     }
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -766,6 +755,28 @@ xorgxrdp_helper_x11_encode_pixmap(int width, int height, int mon_id,
     g_inf_funcs[g_inf].release_tex_image(mi->inf_image);
     glBindTexture(GL_TEXTURE_2D, 0);
     glUseProgram(0);
+}
+
+/*****************************************************************************/
+enum encoder_result
+xorgxrdp_helper_x11_encode_pixmap(int width, int height, int mon_id,
+                                  int num_crects, struct xh_rect *crects,
+                                  void *cdata, int *cdata_bytes)
+{
+    struct mon_info *mi;
+    struct shader_info *si;
+    enum encoder_result rv;
+
+    mi = g_mons + mon_id % MAX_MON;
+    if ((width != mi->width) || (height != mi->height))
+    {
+        LOG(LOG_LEVEL_ERROR, "error width %d should be %d "
+            "height %d should be %d",
+            width, mi->width, height, mi->height);
+        return ENCODER_ERROR;
+    }
+    si = g_si + mi->tex_format % XH_NUM_SHADERS;
+    xorgxrdp_helper_x11_run_shader(width, height, mi, si, num_crects, crects);
     /* sync before encoding */
     XFlush(g_display);
     glFinish();
