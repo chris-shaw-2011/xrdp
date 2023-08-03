@@ -4314,50 +4314,49 @@ NVENCSTATUS NVENCAPI NvEncLookaheadPicture          (void* encoder, NV_ENC_LOOKA
 /*
  *  Defines API function pointers
  */
-typedef NVENCSTATUS (NVENCAPI* PNVENCOPENENCODESESSION)         (void* device, uint32_t deviceType, void** encoder);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEGUIDCOUNT)        (void* encoder, uint32_t* encodeGUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEGUIDS)            (void* encoder, GUID* GUIDs, uint32_t guidArraySize, uint32_t* GUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPROFILEGUIDCOUNT) (void* encoder, GUID encodeGUID, uint32_t* encodeProfileGUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPROFILEGUIDS)     (void* encoder, GUID encodeGUID, GUID* profileGUIDs, uint32_t guidArraySize, uint32_t* GUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETINPUTFORMATCOUNT)       (void* encoder, GUID encodeGUID, uint32_t* inputFmtCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETINPUTFORMATS)           (void* encoder, GUID encodeGUID, NV_ENC_BUFFER_FORMAT* inputFmts, uint32_t inputFmtArraySize, uint32_t* inputFmtCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODECAPS)             (void* encoder, GUID encodeGUID, NV_ENC_CAPS_PARAM* capsParam, int* capsVal);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPRESETCOUNT)      (void* encoder, GUID encodeGUID, uint32_t* encodePresetGUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPRESETGUIDS)      (void* encoder, GUID encodeGUID, GUID* presetGUIDs, uint32_t guidArraySize, uint32_t* encodePresetGUIDCount);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPRESETCONFIG)     (void* encoder, GUID encodeGUID, GUID  presetGUID, NV_ENC_PRESET_CONFIG* presetConfig);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODEPRESETCONFIGEX)   (void* encoder, GUID encodeGUID, GUID  presetGUID, NV_ENC_TUNING_INFO tuningInfo, NV_ENC_PRESET_CONFIG* presetConfig);
-typedef NVENCSTATUS (NVENCAPI* PNVENCINITIALIZEENCODER)         (void* encoder, NV_ENC_INITIALIZE_PARAMS* createEncodeParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCCREATEINPUTBUFFER)         (void* encoder, NV_ENC_CREATE_INPUT_BUFFER* createInputBufferParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCDESTROYINPUTBUFFER)        (void* encoder, NV_ENC_INPUT_PTR inputBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCCREATEBITSTREAMBUFFER)     (void* encoder, NV_ENC_CREATE_BITSTREAM_BUFFER* createBitstreamBufferParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCDESTROYBITSTREAMBUFFER)    (void* encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCENCODEPICTURE)             (void* encoder, NV_ENC_PIC_PARAMS* encodePicParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCLOCKBITSTREAM)             (void* encoder, NV_ENC_LOCK_BITSTREAM* lockBitstreamBufferParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCUNLOCKBITSTREAM)           (void* encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCLOCKINPUTBUFFER)           (void* encoder, NV_ENC_LOCK_INPUT_BUFFER* lockInputBufferParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCUNLOCKINPUTBUFFER)         (void* encoder, NV_ENC_INPUT_PTR inputBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETENCODESTATS)            (void* encoder, NV_ENC_STAT* encodeStats);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETSEQUENCEPARAMS)         (void* encoder, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
-typedef NVENCSTATUS (NVENCAPI* PNVENCREGISTERASYNCEVENT)        (void* encoder, NV_ENC_EVENT_PARAMS* eventParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCUNREGISTERASYNCEVENT)      (void* encoder, NV_ENC_EVENT_PARAMS* eventParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCMAPINPUTRESOURCE)          (void* encoder, NV_ENC_MAP_INPUT_RESOURCE* mapInputResParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCUNMAPINPUTRESOURCE)        (void* encoder, NV_ENC_INPUT_PTR mappedInputBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCDESTROYENCODER)            (void* encoder);
-typedef NVENCSTATUS (NVENCAPI* PNVENCINVALIDATEREFFRAMES)       (void* encoder, uint64_t invalidRefFrameTimeStamp);
-typedef NVENCSTATUS (NVENCAPI* PNVENCOPENENCODESESSIONEX)       (NV_ENC_OPEN_ENCODE_SESSION_EX_PARAMS *openSessionExParams, void** encoder);
-typedef NVENCSTATUS (NVENCAPI* PNVENCREGISTERRESOURCE)          (void* encoder, NV_ENC_REGISTER_RESOURCE* registerResParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCUNREGISTERRESOURCE)        (void* encoder, NV_ENC_REGISTERED_PTR registeredRes);
-typedef NVENCSTATUS (NVENCAPI* PNVENCRECONFIGUREENCODER)        (void* encoder, NV_ENC_RECONFIGURE_PARAMS* reInitEncodeParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCOPENENCODESESSION)         (void *device, uint32_t deviceType, void **encoder);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEGUIDCOUNT)        (void *encoder, uint32_t *encodeGUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEGUIDS)            (void *encoder, GUID *GUIDs, uint32_t guidArraySize, uint32_t *GUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPROFILEGUIDCOUNT) (void *encoder, GUID encodeGUID, uint32_t *encodeProfileGUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPROFILEGUIDS)     (void *encoder, GUID encodeGUID, GUID *profileGUIDs, uint32_t guidArraySize, uint32_t *GUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETINPUTFORMATCOUNT)       (void *encoder, GUID encodeGUID, uint32_t *inputFmtCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETINPUTFORMATS)           (void *encoder, GUID encodeGUID, NV_ENC_BUFFER_FORMAT *inputFmts, uint32_t inputFmtArraySize, uint32_t *inputFmtCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODECAPS)             (void *encoder, GUID encodeGUID, NV_ENC_CAPS_PARAM *capsParam, int *capsVal);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPRESETCOUNT)      (void *encoder, GUID encodeGUID, uint32_t *encodePresetGUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPRESETGUIDS)      (void *encoder, GUID encodeGUID, GUID *presetGUIDs, uint32_t guidArraySize, uint32_t *encodePresetGUIDCount);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPRESETCONFIG)     (void *encoder, GUID encodeGUID, GUID  presetGUID, NV_ENC_PRESET_CONFIG *presetConfig);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODEPRESETCONFIGEX)   (void *encoder, GUID encodeGUID, GUID  presetGUID, NV_ENC_TUNING_INFO tuningInfo, NV_ENC_PRESET_CONFIG *presetConfig);
+typedef NVENCSTATUS (NVENCAPI *PNVENCINITIALIZEENCODER)         (void *encoder, NV_ENC_INITIALIZE_PARAMS *createEncodeParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCCREATEINPUTBUFFER)         (void *encoder, NV_ENC_CREATE_INPUT_BUFFER *createInputBufferParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCDESTROYINPUTBUFFER)        (void *encoder, NV_ENC_INPUT_PTR inputBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCCREATEBITSTREAMBUFFER)     (void *encoder, NV_ENC_CREATE_BITSTREAM_BUFFER *createBitstreamBufferParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCDESTROYBITSTREAMBUFFER)    (void *encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCENCODEPICTURE)             (void *encoder, NV_ENC_PIC_PARAMS *encodePicParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCLOCKBITSTREAM)             (void *encoder, NV_ENC_LOCK_BITSTREAM *lockBitstreamBufferParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCUNLOCKBITSTREAM)           (void *encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCLOCKINPUTBUFFER)           (void *encoder, NV_ENC_LOCK_INPUT_BUFFER *lockInputBufferParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCUNLOCKINPUTBUFFER)         (void *encoder, NV_ENC_INPUT_PTR inputBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETENCODESTATS)            (void *encoder, NV_ENC_STAT *encodeStats);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETSEQUENCEPARAMS)         (void *encoder, NV_ENC_SEQUENCE_PARAM_PAYLOAD *sequenceParamPayload);
+typedef NVENCSTATUS (NVENCAPI *PNVENCREGISTERASYNCEVENT)        (void *encoder, NV_ENC_EVENT_PARAMS *eventParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCUNREGISTERASYNCEVENT)      (void *encoder, NV_ENC_EVENT_PARAMS *eventParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCMAPINPUTRESOURCE)          (void *encoder, NV_ENC_MAP_INPUT_RESOURCE *mapInputResParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCUNMAPINPUTRESOURCE)        (void *encoder, NV_ENC_INPUT_PTR mappedInputBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCDESTROYENCODER)            (void *encoder);
+typedef NVENCSTATUS (NVENCAPI *PNVENCINVALIDATEREFFRAMES)       (void *encoder, uint64_t invalidRefFrameTimeStamp);
+typedef NVENCSTATUS (NVENCAPI *PNVENCOPENENCODESESSIONEX)       (NV_ENC_OPEN_ENCODE_SESSION_EX_PARAMS *openSessionExParams, void **encoder);
+typedef NVENCSTATUS (NVENCAPI *PNVENCREGISTERRESOURCE)          (void *encoder, NV_ENC_REGISTER_RESOURCE *registerResParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCUNREGISTERRESOURCE)        (void *encoder, NV_ENC_REGISTERED_PTR registeredRes);
+typedef NVENCSTATUS (NVENCAPI *PNVENCRECONFIGUREENCODER)        (void *encoder, NV_ENC_RECONFIGURE_PARAMS *reInitEncodeParams);
 
-typedef NVENCSTATUS (NVENCAPI* PNVENCCREATEMVBUFFER)            (void* encoder, NV_ENC_CREATE_MV_BUFFER* createMVBufferParams);
-typedef NVENCSTATUS (NVENCAPI* PNVENCDESTROYMVBUFFER)           (void* encoder, NV_ENC_OUTPUT_PTR mvBuffer);
-typedef NVENCSTATUS (NVENCAPI* PNVENCRUNMOTIONESTIMATIONONLY)   (void* encoder, NV_ENC_MEONLY_PARAMS* meOnlyParams);
-typedef const char * (NVENCAPI* PNVENCGETLASTERROR)             (void* encoder);
-typedef NVENCSTATUS (NVENCAPI* PNVENCSETIOCUDASTREAMS)          (void* encoder, NV_ENC_CUSTREAM_PTR inputStream, NV_ENC_CUSTREAM_PTR outputStream);
-typedef NVENCSTATUS (NVENCAPI* PNVENCGETSEQUENCEPARAMEX)        (void* encoder, NV_ENC_INITIALIZE_PARAMS* encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
-typedef NVENCSTATUS (NVENCAPI* PNVENCRESTOREENCODERSTATE)       (void* encoder, NV_ENC_RESTORE_ENCODER_STATE_PARAMS* restoreState);
-typedef NVENCSTATUS (NVENCAPI* PNVENCLOOKAHEADPICTURE)          (void* encoder, NV_ENC_LOOKAHEAD_PIC_PARAMS* lookaheadParams);
-
+typedef NVENCSTATUS (NVENCAPI *PNVENCCREATEMVBUFFER)            (void *encoder, NV_ENC_CREATE_MV_BUFFER *createMVBufferParams);
+typedef NVENCSTATUS (NVENCAPI *PNVENCDESTROYMVBUFFER)           (void *encoder, NV_ENC_OUTPUT_PTR mvBuffer);
+typedef NVENCSTATUS (NVENCAPI *PNVENCRUNMOTIONESTIMATIONONLY)   (void *encoder, NV_ENC_MEONLY_PARAMS *meOnlyParams);
+typedef const char *(NVENCAPI *PNVENCGETLASTERROR)             (void *encoder);
+typedef NVENCSTATUS (NVENCAPI *PNVENCSETIOCUDASTREAMS)          (void *encoder, NV_ENC_CUSTREAM_PTR inputStream, NV_ENC_CUSTREAM_PTR outputStream);
+typedef NVENCSTATUS (NVENCAPI *PNVENCGETSEQUENCEPARAMEX)        (void *encoder, NV_ENC_INITIALIZE_PARAMS *encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD *sequenceParamPayload);
+typedef NVENCSTATUS (NVENCAPI *PNVENCRESTOREENCODERSTATE)       (void *encoder, NV_ENC_RESTORE_ENCODER_STATE_PARAMS *restoreState);
+typedef NVENCSTATUS (NVENCAPI *PNVENCLOOKAHEADPICTURE)          (void *encoder, NV_ENC_LOOKAHEAD_PIC_PARAMS *lookaheadParams);
 
 /// \endcond
 
@@ -4405,7 +4404,7 @@ typedef struct _NV_ENCODE_API_FUNCTION_LIST
     PNVENCREGISTERRESOURCE          nvEncRegisterResource;             /**< [out]: Client should access ::NvEncRegisterResource() API through this pointer.         */
     PNVENCUNREGISTERRESOURCE        nvEncUnregisterResource;           /**< [out]: Client should access ::NvEncUnregisterResource() API through this pointer.       */
     PNVENCRECONFIGUREENCODER        nvEncReconfigureEncoder;           /**< [out]: Client should access ::NvEncReconfigureEncoder() API through this pointer.       */
-    void*                           reserved1;
+    void                           *reserved1;
     PNVENCCREATEMVBUFFER            nvEncCreateMVBuffer;               /**< [out]: Client should access ::NvEncCreateMVBuffer API through this pointer.             */
     PNVENCDESTROYMVBUFFER           nvEncDestroyMVBuffer;              /**< [out]: Client should access ::NvEncDestroyMVBuffer API through this pointer.            */
     PNVENCRUNMOTIONESTIMATIONONLY   nvEncRunMotionEstimationOnly;      /**< [out]: Client should access ::NvEncRunMotionEstimationOnly API through this pointer.    */
@@ -4415,7 +4414,7 @@ typedef struct _NV_ENCODE_API_FUNCTION_LIST
     PNVENCGETSEQUENCEPARAMEX        nvEncGetSequenceParamEx;           /**< [out]: Client should access ::NvEncGetSequenceParamEx() API through this pointer.       */
     PNVENCRESTOREENCODERSTATE       nvEncRestoreEncoderState;          /**< [out]: Client should access ::NvEncRestoreEncoderState() API through this pointer.      */
     PNVENCLOOKAHEADPICTURE          nvEncLookaheadPicture;             /**< [out]: Client should access ::NvEncLookaheadPicture() API through this pointer.         */
-    void*                           reserved2[275];                    /**< [in]:  Reserved and must be set to NULL                                                 */
+    void                           *reserved2[275];                    /**< [in]:  Reserved and must be set to NULL                                                 */
 } NV_ENCODE_API_FUNCTION_LIST;
 
 /** Macro for constructing the version field of ::_NV_ENCODEAPI_FUNCTION_LIST. */
