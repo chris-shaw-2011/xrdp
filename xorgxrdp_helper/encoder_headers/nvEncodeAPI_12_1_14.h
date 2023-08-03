@@ -1309,9 +1309,9 @@ typedef struct _NV_ENC_RESTORE_ENCODER_STATE_PARAMS
     NV_ENC_OUTPUT_PTR         outputBitstream;         /**< [in]: Specifies the output buffer pointer, for AV1 encode only.
                                                                   Application must call NvEncRestoreEncoderState() API with _NV_ENC_RESTORE_ENCODER_STATE_PARAMS::outputBitstream and
                                                                   _NV_ENC_RESTORE_ENCODER_STATE_PARAMS::completionEvent as input when an earlier call to this API returned "NV_ENC_ERR_NEED_MORE_OUTPUT", for AV1 encode. */
-    void*                     completionEvent;         /**< [in]: Specifies the completion event when asynchronous mode of encoding is enabled. Used for AV1 encode only. */
+    void                     *completionEvent;         /**< [in]: Specifies the completion event when asynchronous mode of encoding is enabled. Used for AV1 encode only. */
     uint32_t                  reserved1[64];           /**< [in]: Reserved and must be set to 0 */
-    void*                     reserved2[64];           /**< [in]: Reserved and must be set to NULL */
+    void                     *reserved2[64];           /**< [in]: Reserved and must be set to NULL */
 } NV_ENC_RESTORE_ENCODER_STATE_PARAMS;
 
 /** NV_ENC_RESTORE_ENCODER_STATE_PARAMS struct version. */
@@ -1322,11 +1322,11 @@ typedef struct _NV_ENC_RESTORE_ENCODER_STATE_PARAMS
  */
 typedef struct _NV_ENC_OUTPUT_STATS_BLOCK
 {
-   uint32_t                 version;                /**< [in]: Struct version */
-   uint8_t                  QP;                     /**< [out]: QP of the block */
-   uint8_t                  reserved[3];            /**< [in]: Reserved and must be set to 0 */
-   uint32_t                 bitcount;               /**< [out]: Bitcount of the block */
-   uint32_t                 reserved1[13];          /**< [in]: Reserved and must be set to 0 */
+    uint32_t                 version;                /**< [in]: Struct version */
+    uint8_t                  QP;                     /**< [out]: QP of the block */
+    uint8_t                  reserved[3];            /**< [in]: Reserved and must be set to 0 */
+    uint32_t                 bitcount;               /**< [out]: Bitcount of the block */
+    uint32_t                 reserved1[13];          /**< [in]: Reserved and must be set to 0 */
 } NV_ENC_OUTPUT_STATS_BLOCK;
 
 /** NV_ENC_OUTPUT_STATS_BLOCK struct version. */
@@ -1337,11 +1337,11 @@ typedef struct _NV_ENC_OUTPUT_STATS_BLOCK
  */
 typedef struct _NV_ENC_OUTPUT_STATS_ROW
 {
-   uint32_t                 version;                /**< [in]: Struct version */
-   uint8_t                  QP;                     /**< [out]: QP of the row */
-   uint8_t                  reserved[3];            /**< [in]: Reserved and must be set to 0 */
-   uint32_t                 bitcount;               /**< [out]: Bitcount of the row */
-   uint32_t                 reserved1[13];          /**< [in]: Reserved and must be set to 0 */
+    uint32_t                 version;                /**< [in]: Struct version */
+    uint8_t                  QP;                     /**< [out]: QP of the row */
+    uint8_t                  reserved[3];            /**< [in]: Reserved and must be set to 0 */
+    uint32_t                 bitcount;               /**< [out]: Bitcount of the row */
+    uint32_t                 reserved1[13];          /**< [in]: Reserved and must be set to 0 */
 } NV_ENC_OUTPUT_STATS_ROW;
 
 /** NV_ENC_OUTPUT_STATS_ROW struct version. */
@@ -1369,7 +1369,7 @@ typedef struct _NV_ENC_LOOKAHEAD_PIC_PARAMS
     NV_ENC_INPUT_PTR          inputBuffer;             /**< [in]: Specifies the input buffer pointer. Client must use a pointer obtained from ::NvEncCreateInputBuffer() or ::NvEncMapInputResource() APIs.*/
     NV_ENC_PIC_TYPE           pictureType;             /**< [in]: Specifies input picture type. Client required to be set explicitly by the client if the client has not set NV_ENC_INITALIZE_PARAMS::enablePTD to 1 while calling NvInitializeEncoder. */
     uint32_t                  reserved[64];            /**< [in]: Reserved and must be set to 0 */
-    void*                     reserved1[64];           /**< [in]: Reserved and must be set to NULL */
+    void                     *reserved1[64];           /**< [in]: Reserved and must be set to NULL */
 } NV_ENC_LOOKAHEAD_PIC_PARAMS;
 
 /** NV_ENC_LOOKAHEAD_PIC_PARAMS struct version. */
@@ -1387,9 +1387,9 @@ typedef struct _NV_ENC_CREATE_INPUT_BUFFER
     NV_ENC_BUFFER_FORMAT      bufferFmt;               /**< [in]: Input buffer format */
     uint32_t                  reserved;                /**< [in]: Reserved and must be set to 0 */
     NV_ENC_INPUT_PTR          inputBuffer;             /**< [out]: Pointer to input buffer */
-    void*                     pSysMemBuffer;           /**< [in]: Pointer to existing system memory buffer */
+    void                     *pSysMemBuffer;           /**< [in]: Pointer to existing system memory buffer */
     uint32_t                  reserved1[57];           /**< [in]: Reserved and must be set to 0 */
-    void*                     reserved2[63];           /**< [in]: Reserved and must be set to NULL */
+    void                     *reserved2[63];           /**< [in]: Reserved and must be set to NULL */
 } NV_ENC_CREATE_INPUT_BUFFER;
 
 /** NV_ENC_CREATE_INPUT_BUFFER struct version. */
@@ -1405,9 +1405,9 @@ typedef struct _NV_ENC_CREATE_BITSTREAM_BUFFER
     NV_ENC_MEMORY_HEAP    memoryHeap;                  /**< [in]: Deprecated. Do not use */
     uint32_t              reserved;                    /**< [in]: Reserved and must be set to 0 */
     NV_ENC_OUTPUT_PTR     bitstreamBuffer;             /**< [out]: Pointer to the output bitstream buffer */
-    void*                 bitstreamBufferPtr;          /**< [out]: Reserved and should not be used */
+    void                 *bitstreamBufferPtr;          /**< [out]: Reserved and should not be used */
     uint32_t              reserved1[58];               /**< [in]: Reserved and should be set to 0 */
-    void*                 reserved2[64];               /**< [in]: Reserved and should be set to NULL */
+    void                 *reserved2[64];               /**< [in]: Reserved and should be set to NULL */
 } NV_ENC_CREATE_BITSTREAM_BUFFER;
 
 /** NV_ENC_CREATE_BITSTREAM_BUFFER struct version. */
@@ -1475,8 +1475,8 @@ typedef struct _NV_ENC_QP
 /**
  * Rate Control Configuration Parameters
  */
- typedef struct _NV_ENC_RC_PARAMS
- {
+typedef struct _NV_ENC_RC_PARAMS
+{
     uint32_t                        version;
     NV_ENC_PARAMS_RC_MODE           rateControlMode;                             /**< [in]: Specifies the rate control mode. Check support for various rate control modes using ::NV_ENC_CAPS_SUPPORTED_RATECONTROL_MODES caps. */
     NV_ENC_QP                       constQP;                                     /**< [in]: Specifies the initial QP to be used for encoding, these values would be used for all frames if in Constant QP mode. */
@@ -1484,24 +1484,23 @@ typedef struct _NV_ENC_QP
     uint32_t                        maxBitRate;                                  /**< [in]: Specifies the maximum bitrate for the encoded output. This is used for VBR and ignored for CBR mode. */
     uint32_t                        vbvBufferSize;                               /**< [in]: Specifies the VBV(HRD) buffer size. in bits. Set 0 to use the default VBV  buffer size. */
     uint32_t                        vbvInitialDelay;                             /**< [in]: Specifies the VBV(HRD) initial delay in bits. Set 0 to use the default VBV  initial delay .*/
-    uint32_t                        enableMinQP          :1;                     /**< [in]: Set this to 1 if minimum QP used for rate control. */
-    uint32_t                        enableMaxQP          :1;                     /**< [in]: Set this to 1 if maximum QP used for rate control. */
-    uint32_t                        enableInitialRCQP    :1;                     /**< [in]: Set this to 1 if user supplied initial QP is used for rate control. */
-    uint32_t                        enableAQ             :1;                     /**< [in]: Set this to 1 to enable adaptive quantization (Spatial). */
-    uint32_t                        reservedBitField1    :1;                     /**< [in]: Reserved bitfields and must be set to 0. */
-    uint32_t                        enableLookahead      :1;                     /**< [in]: Set this to 1 to enable lookahead with depth <lookaheadDepth> (if lookahead is enabled, input frames must remain available to the encoder until encode completion) */
-    uint32_t                        disableIadapt        :1;                     /**< [in]: Set this to 1 to disable adaptive I-frame insertion at scene cuts (only has an effect when lookahead is enabled) */
-    uint32_t                        disableBadapt        :1;                     /**< [in]: Set this to 1 to disable adaptive B-frame decision (only has an effect when lookahead is enabled) */
-    uint32_t                        enableTemporalAQ     :1;                     /**< [in]: Set this to 1 to enable temporal AQ */
-    uint32_t                        zeroReorderDelay     :1;                     /**< [in]: Set this to 1 to indicate zero latency operation (no reordering delay, num_reorder_frames=0) */
-    uint32_t                        enableNonRefP        :1;                     /**< [in]: Set this to 1 to enable automatic insertion of non-reference P-frames (no effect if enablePTD=0) */
-    uint32_t                        strictGOPTarget      :1;                     /**< [in]: Set this to 1 to minimize GOP-to-GOP rate fluctuations */
-    uint32_t                        aqStrength           :4;                     /**< [in]: When AQ (Spatial) is enabled (i.e. NV_ENC_RC_PARAMS::enableAQ is set), this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive).
-                                                                                            If not set, strength is auto selected by driver. */
-    uint32_t                        enableExtLookahead   :1;                     /**< [in]: Set this to 1 to enable lookahead externally. 
+    uint32_t                        enableMinQP          : 1;                    /**< [in]: Set this to 1 if minimum QP used for rate control. */
+    uint32_t                        enableMaxQP          : 1;                    /**< [in]: Set this to 1 if maximum QP used for rate control. */
+    uint32_t                        enableInitialRCQP    : 1;                    /**< [in]: Set this to 1 if user supplied initial QP is used for rate control. */
+    uint32_t                        enableAQ             : 1;                    /**< [in]: Set this to 1 to enable adaptive quantization (Spatial). */
+    uint32_t                        reservedBitField1    : 1;                    /**< [in]: Reserved bitfields and must be set to 0. */
+    uint32_t                        enableLookahead      : 1;                    /**< [in]: Set this to 1 to enable lookahead with depth <lookaheadDepth> (if lookahead is enabled, input frames must remain available to the encoder until encode completion) */
+    uint32_t                        disableIadapt        : 1;                    /**< [in]: Set this to 1 to disable adaptive I-frame insertion at scene cuts (only has an effect when lookahead is enabled) */
+    uint32_t                        disableBadapt        : 1;                    /**< [in]: Set this to 1 to disable adaptive B-frame decision (only has an effect when lookahead is enabled) */
+    uint32_t                        enableTemporalAQ     : 1;                    /**< [in]: Set this to 1 to enable temporal AQ */
+    uint32_t                        zeroReorderDelay     : 1;                    /**< [in]: Set this to 1 to indicate zero latency operation (no reordering delay, num_reorder_frames=0) */
+    uint32_t                        enableNonRefP        : 1;                    /**< [in]: Set this to 1 to enable automatic insertion of non-reference P-frames (no effect if enablePTD=0) */
+    uint32_t                        strictGOPTarget      : 1;                    /**< [in]: Set this to 1 to minimize GOP-to-GOP rate fluctuations */
+    uint32_t                        aqStrength           : 4;                    /**< [in]: When AQ (Spatial) is enabled (i.e. NV_ENC_RC_PARAMS::enableAQ is set), this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive).                            If not set, strength is auto selected by driver. */
+    uint32_t                        enableExtLookahead   : 1;                    /**< [in]: Set this to 1 to enable lookahead externally. 
                                                                                             Application must call NvEncLookahead() for NV_ENC_RC_PARAMS::lookaheadDepth number of frames,
                                                                                             before calling NvEncEncodePicture() for the first frame */
-    uint32_t                        reservedBitFields    :15;                    /**< [in]: Reserved bitfields and must be set to 0 */
+    uint32_t                        reservedBitFields    : 15;                   /**< [in]: Reserved bitfields and must be set to 0 */
     NV_ENC_QP                       minQP;                                       /**< [in]: Specifies the minimum QP used for rate control. Client must set NV_ENC_CONFIG::enableMinQP to 1. */
     NV_ENC_QP                       maxQP;                                       /**< [in]: Specifies the maximum QP used for rate control. Client must set NV_ENC_CONFIG::enableMaxQP to 1. */
     NV_ENC_QP                       initialRCQP;                                 /**< [in]: Specifies the initial QP hint used for rate control. The parameter is just used as hint to influence the QP difference between I,P and B frames.
