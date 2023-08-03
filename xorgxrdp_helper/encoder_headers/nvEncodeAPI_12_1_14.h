@@ -3568,7 +3568,7 @@ NVENCSTATUS NVENCAPI NvEncDestroyBitstreamBuffer                (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncEncodePicture                         (void* encoder, NV_ENC_PIC_PARAMS* encodePicParams);
+NVENCSTATUS NVENCAPI NvEncEncodePicture                         (void *encoder, NV_ENC_PIC_PARAMS *encodePicParams);
 
 
 // NvEncLockBitstream
@@ -3607,7 +3607,7 @@ NVENCSTATUS NVENCAPI NvEncEncodePicture                         (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncLockBitstream                         (void* encoder, NV_ENC_LOCK_BITSTREAM* lockBitstreamBufferParams);
+NVENCSTATUS NVENCAPI NvEncLockBitstream                         (void *encoder, NV_ENC_LOCK_BITSTREAM *lockBitstreamBufferParams);
 
 
 // NvEncUnlockBitstream
@@ -3637,7 +3637,7 @@ NVENCSTATUS NVENCAPI NvEncLockBitstream                         (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncUnlockBitstream                       (void* encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
+NVENCSTATUS NVENCAPI NvEncUnlockBitstream                       (void *encoder, NV_ENC_OUTPUT_PTR bitstreamBuffer);
 
 // NvEncRestoreEncoderState
 /**
@@ -3646,7 +3646,7 @@ NVENCSTATUS NVENCAPI NvEncUnlockBitstream                       (void* encoder, 
  * This function is used to restore the state of encoder with state saved internally in
  * state buffer corresponding to index equal to 'NV_ENC_RESTORE_ENCODER_STATE_PARAMS::bfrIndex'. 
  * Client can specify the state type to be updated by specifying appropriate value in
- * 'NV_ENC_RESTORE_ENCODER_STATE_PARAMS::state'. The client must call this 
+ * 'NV_ENC_RESTORE_ENCODER_STATE_PARAMS::state'. The client must call this
  * function after all previous encodes have finished.
  *
  * \param [in] encoder
@@ -3666,7 +3666,7 @@ NVENCSTATUS NVENCAPI NvEncUnlockBitstream                       (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncRestoreEncoderState                    (void* encoder, NV_ENC_RESTORE_ENCODER_STATE_PARAMS* restoreState);
+NVENCSTATUS NVENCAPI NvEncRestoreEncoderState                    (void *encoder, NV_ENC_RESTORE_ENCODER_STATE_PARAMS *restoreState);
 
 // NvLockInputBuffer
 /**
@@ -3699,7 +3699,7 @@ NVENCSTATUS NVENCAPI NvEncRestoreEncoderState                    (void* encoder,
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncLockInputBuffer                      (void* encoder, NV_ENC_LOCK_INPUT_BUFFER* lockInputBufferParams);
+NVENCSTATUS NVENCAPI NvEncLockInputBuffer                      (void *encoder, NV_ENC_LOCK_INPUT_BUFFER *lockInputBufferParams);
 
 
 // NvUnlockInputBuffer
@@ -3729,7 +3729,7 @@ NVENCSTATUS NVENCAPI NvEncLockInputBuffer                      (void* encoder, N
  *
  *
  */
-NVENCSTATUS NVENCAPI NvEncUnlockInputBuffer                     (void* encoder, NV_ENC_INPUT_PTR inputBuffer);
+NVENCSTATUS NVENCAPI NvEncUnlockInputBuffer                     (void *encoder, NV_ENC_INPUT_PTR inputBuffer);
 
 
 // NvEncGetEncodeStats
@@ -3758,7 +3758,7 @@ NVENCSTATUS NVENCAPI NvEncUnlockInputBuffer                     (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncGetEncodeStats                        (void* encoder, NV_ENC_STAT* encodeStats);
+NVENCSTATUS NVENCAPI NvEncGetEncodeStats                        (void *encoder, NV_ENC_STAT *encodeStats);
 
 
 // NvEncGetSequenceParams
@@ -3794,8 +3794,8 @@ NVENCSTATUS NVENCAPI NvEncGetEncodeStats                        (void* encoder, 
  * ::NV_ENC_ERR_ENCODER_NOT_INITIALIZED \n
  * ::NV_ENC_ERR_GENERIC \n
  *
- */
-NVENCSTATUS NVENCAPI NvEncGetSequenceParams                     (void* encoder, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
+ */NVENCSTATUS NVENCAPI NvEncGetSequenceParams                     (void *encoder, NV_ENC_SEQUENCE_PARAM_PAYLOAD *sequenceParamPayload);
+
 
 // NvEncGetSequenceParamEx
 /**
@@ -3834,7 +3834,7 @@ NVENCSTATUS NVENCAPI NvEncGetSequenceParams                     (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncGetSequenceParamEx                     (void *encoder, NV_ENC_INITIALIZE_PARAMS *encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
+NVENCSTATUS NVENCAPI NvEncGetSequenceParamEx                     (void *encoder, NV_ENC_INITIALIZE_PARAMS *encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD *sequenceParamPayload);
 
 // NvEncRegisterAsyncEvent
 /**
