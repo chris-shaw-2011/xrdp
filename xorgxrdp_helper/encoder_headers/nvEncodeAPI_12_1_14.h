@@ -1456,7 +1456,7 @@ typedef struct _NV_ENC_CREATE_MV_BUFFER
     uint32_t            version;           /**< [in]: Struct version. Must be set to NV_ENC_CREATE_MV_BUFFER_VER */
     NV_ENC_OUTPUT_PTR   mvBuffer;          /**< [out]: Pointer to the output motion vector buffer */
     uint32_t            reserved1[255];    /**< [in]: Reserved and should be set to 0 */
-    void*               reserved2[63];     /**< [in]: Reserved and should be set to NULL */
+    void               *reserved2[63];     /**< [in]: Reserved and should be set to NULL */
 } NV_ENC_CREATE_MV_BUFFER;
 
 /** NV_ENC_CREATE_MV_BUFFER struct version*/
@@ -1497,7 +1497,7 @@ typedef struct _NV_ENC_RC_PARAMS
     uint32_t                        enableNonRefP        : 1;                    /**< [in]: Set this to 1 to enable automatic insertion of non-reference P-frames (no effect if enablePTD=0) */
     uint32_t                        strictGOPTarget      : 1;                    /**< [in]: Set this to 1 to minimize GOP-to-GOP rate fluctuations */
     uint32_t                        aqStrength           : 4;                    /**< [in]: When AQ (Spatial) is enabled (i.e. NV_ENC_RC_PARAMS::enableAQ is set), this field is used to specify AQ strength. AQ strength scale is from 1 (low) - 15 (aggressive).                            If not set, strength is auto selected by driver. */
-    uint32_t                        enableExtLookahead   : 1;                    /**< [in]: Set this to 1 to enable lookahead externally. 
+    uint32_t                        enableExtLookahead   : 1;                    /**< [in]: Set this to 1 to enable lookahead externally.
                                                                                             Application must call NvEncLookahead() for NV_ENC_RC_PARAMS::lookaheadDepth number of frames,
                                                                                             before calling NvEncEncodePicture() for the first frame */
     uint32_t                        reservedBitFields    : 15;                   /**< [in]: Reserved bitfields and must be set to 0 */
@@ -1542,7 +1542,7 @@ typedef struct _NV_ENC_RC_PARAMS
     int8_t                          crQPIndexOffset;                              /**< [in]: Specifies the value of 'second_chroma_qp_index_offset' in H264 / 'pps_cr_qp_offset' in HEVC / 'deltaQ_v_ac' in AV1 (for future use only - deltaQ_v_ac is currently always internally set to same value as deltaQ_u_ac). */
     uint16_t                        reserved2;
     uint32_t                        reserved[4];
- } NV_ENC_RC_PARAMS;
+} NV_ENC_RC_PARAMS;
 
 /** macro for constructing the version field of ::_NV_ENC_RC_PARAMS */
 #define NV_ENC_RC_PARAMS_VER NVENCAPI_STRUCT_VERSION(1)
@@ -1600,7 +1600,7 @@ typedef struct _NV_ENC_CONFIG_H264_VUI_PARAMETERS
     uint32_t                            numUnitInTicks;                 /**< [in]: Specifies the number of time units of the clock(as defined in Annex E of the ITU-T Specification). */
     uint32_t                            timeScale;                      /**< [in]: Specifies the frquency of the clock(as defined in Annex E of the ITU-T Specification). */
     uint32_t                            reserved[12];                   /**< [in]: Reserved and must be set to 0 */
-}NV_ENC_CONFIG_H264_VUI_PARAMETERS;
+} NV_ENC_CONFIG_H264_VUI_PARAMETERS;
 
 typedef NV_ENC_CONFIG_H264_VUI_PARAMETERS NV_ENC_CONFIG_HEVC_VUI_PARAMETERS;
 
@@ -1663,34 +1663,34 @@ typedef struct _NVENC_EXTERNAL_ME_SB_HINT
  */
 typedef struct _NV_ENC_CONFIG_H264
 {
-    uint32_t enableTemporalSVC         :1;                          /**< [in]: Set to 1 to enable SVC temporal*/
-    uint32_t enableStereoMVC           :1;                          /**< [in]: Set to 1 to enable stereo MVC*/
-    uint32_t hierarchicalPFrames       :1;                          /**< [in]: Set to 1 to enable hierarchical P Frames */
-    uint32_t hierarchicalBFrames       :1;                          /**< [in]: Set to 1 to enable hierarchical B Frames */
-    uint32_t outputBufferingPeriodSEI  :1;                          /**< [in]: Set to 1 to write SEI buffering period syntax in the bitstream */
-    uint32_t outputPictureTimingSEI    :1;                          /**< [in]: Set to 1 to write SEI picture timing syntax in the bitstream. */
-    uint32_t outputAUD                 :1;                          /**< [in]: Set to 1 to write access unit delimiter syntax in bitstream */
-    uint32_t disableSPSPPS             :1;                          /**< [in]: Set to 1 to disable writing of Sequence and Picture parameter info in bitstream */
-    uint32_t outputFramePackingSEI     :1;                          /**< [in]: Set to 1 to enable writing of frame packing arrangement SEI messages to bitstream */
-    uint32_t outputRecoveryPointSEI    :1;                          /**< [in]: Set to 1 to enable writing of recovery point SEI message */
-    uint32_t enableIntraRefresh        :1;                          /**< [in]: Set to 1 to enable gradual decoder refresh or intra refresh. If the GOP structure uses B frames this will be ignored */
-    uint32_t enableConstrainedEncoding :1;                          /**< [in]: Set this to 1 to enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices.
+    uint32_t enableTemporalSVC         : 1;                         /**< [in]: Set to 1 to enable SVC temporal*/
+    uint32_t enableStereoMVC           : 1;                         /**< [in]: Set to 1 to enable stereo MVC*/
+    uint32_t hierarchicalPFrames       : 1;                         /**< [in]: Set to 1 to enable hierarchical P Frames */
+    uint32_t hierarchicalBFrames       : 1;                         /**< [in]: Set to 1 to enable hierarchical B Frames */
+    uint32_t outputBufferingPeriodSEI  : 1;                         /**< [in]: Set to 1 to write SEI buffering period syntax in the bitstream */
+    uint32_t outputPictureTimingSEI    : 1;                         /**< [in]: Set to 1 to write SEI picture timing syntax in the bitstream. */
+    uint32_t outputAUD                 : 1;                         /**< [in]: Set to 1 to write access unit delimiter syntax in bitstream */
+    uint32_t disableSPSPPS             : 1;                         /**< [in]: Set to 1 to disable writing of Sequence and Picture parameter info in bitstream */
+    uint32_t outputFramePackingSEI     : 1;                         /**< [in]: Set to 1 to enable writing of frame packing arrangement SEI messages to bitstream */
+    uint32_t outputRecoveryPointSEI    : 1;                         /**< [in]: Set to 1 to enable writing of recovery point SEI message */
+    uint32_t enableIntraRefresh        : 1;                         /**< [in]: Set to 1 to enable gradual decoder refresh or intra refresh. If the GOP structure uses B frames this will be ignored */
+    uint32_t enableConstrainedEncoding : 1;                         /**< [in]: Set this to 1 to enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices.
                                                                                Constrained encoding works only with rectangular slices.
                                                                                Check support for constrained encoding using ::NV_ENC_CAPS_SUPPORT_CONSTRAINED_ENCODING caps. */
-    uint32_t repeatSPSPPS              :1;                          /**< [in]: Set to 1 to enable writing of Sequence and Picture parameter for every IDR frame */
-    uint32_t enableVFR                 :1;                          /**< [in]: Setting enableVFR=1 currently only sets the fixed_frame_rate_flag=0 in the VUI but otherwise
+    uint32_t repeatSPSPPS              : 1;                         /**< [in]: Set to 1 to enable writing of Sequence and Picture parameter for every IDR frame */
+    uint32_t enableVFR                 : 1;                         /**< [in]: Setting enableVFR=1 currently only sets the fixed_frame_rate_flag=0 in the VUI but otherwise
                                                                                has no impact on the encoder behavior. For more details please refer to E.1 VUI syntax of H.264 standard. Note, however, that NVENC does not support VFR encoding and rate control. */
-    uint32_t enableLTR                 :1;                          /**< [in]: Set to 1 to enable LTR (Long Term Reference) frame support. LTR can be used in two modes: "LTR Trust" mode and "LTR Per Picture" mode.
+    uint32_t enableLTR                 : 1;                         /**< [in]: Set to 1 to enable LTR (Long Term Reference) frame support. LTR can be used in two modes: "LTR Trust" mode and "LTR Per Picture" mode.
                                                                                LTR Trust mode: In this mode, ltrNumFrames pictures after IDR are automatically marked as LTR. This mode is enabled by setting ltrTrustMode = 1.
                                                                                                Use of LTR Trust mode is strongly discouraged as this mode may be deprecated in future.
                                                                                LTR Per Picture mode: In this mode, client can control whether the current picture should be marked as LTR. Enable this mode by setting
                                                                                                      ltrTrustMode = 0 and ltrMarkFrame = 1 for the picture to be marked as LTR. This is the preferred mode
                                                                                                      for using LTR.
                                                                                Note that LTRs are not supported if encoding session is configured with B-frames */
-    uint32_t qpPrimeYZeroTransformBypassFlag :1;                    /**< [in]: To enable lossless encode set this to 1, set QP to 0 and RC_mode to NV_ENC_PARAMS_RC_CONSTQP and profile to HIGH_444_PREDICTIVE_PROFILE.
+    uint32_t qpPrimeYZeroTransformBypassFlag : 1;                   /**< [in]: To enable lossless encode set this to 1, set QP to 0 and RC_mode to NV_ENC_PARAMS_RC_CONSTQP and profile to HIGH_444_PREDICTIVE_PROFILE.
                                                                                Check support for lossless encoding using ::NV_ENC_CAPS_SUPPORT_LOSSLESS_ENCODE caps.  */
-    uint32_t useConstrainedIntraPred   :1;                          /**< [in]: Set 1 to enable constrained intra prediction. */
-    uint32_t enableFillerDataInsertion :1;                          /**< [in]: Set to 1 to enable insertion of filler data in the bitstream.
+    uint32_t useConstrainedIntraPred   : 1;                         /**< [in]: Set 1 to enable constrained intra prediction. */
+    uint32_t enableFillerDataInsertion : 1;                         /**< [in]: Set to 1 to enable insertion of filler data in the bitstream.
                                                                                This flag will take effect only when CBR rate control mode is in use and both
                                                                                NV_ENC_INITIALIZE_PARAMS::frameRateNum and
                                                                                NV_ENC_INITIALIZE_PARAMS::frameRateDen are set to non-zero
@@ -1698,15 +1698,15 @@ typedef struct _NV_ENC_CONFIG_H264
                                                                                NV_ENC_INITIALIZE_PARAMS::enableOutputInVidmem is also set
                                                                                is currently not supported and will make ::NvEncInitializeEncoder()
                                                                                return an error. */
-    uint32_t disableSVCPrefixNalu      :1;                          /**< [in]: Set to 1 to disable writing of SVC Prefix NALU preceding each slice in bitstream.
+    uint32_t disableSVCPrefixNalu      : 1;                         /**< [in]: Set to 1 to disable writing of SVC Prefix NALU preceding each slice in bitstream.
                                                                                Applicable only when temporal SVC is enabled (NV_ENC_CONFIG_H264::enableTemporalSVC = 1). */
-    uint32_t enableScalabilityInfoSEI  :1;                          /**< [in]: Set to 1 to enable writing of Scalability Information SEI message preceding each IDR picture in bitstream
+    uint32_t enableScalabilityInfoSEI  : 1;                         /**< [in]: Set to 1 to enable writing of Scalability Information SEI message preceding each IDR picture in bitstream
                                                                                Applicable only when temporal SVC is enabled (NV_ENC_CONFIG_H264::enableTemporalSVC = 1). */
-    uint32_t singleSliceIntraRefresh   :1;                          /**< [in]: Set to 1 to maintain single slice in frames during intra refresh.
+    uint32_t singleSliceIntraRefresh   : 1;                         /**< [in]: Set to 1 to maintain single slice in frames during intra refresh.
                                                                                Check support for single slice intra refresh using ::NV_ENC_CAPS_SINGLE_SLICE_INTRA_REFRESH caps.
                                                                                This flag will be ignored if the value returned for ::NV_ENC_CAPS_SINGLE_SLICE_INTRA_REFRESH caps is false. */
-    uint32_t enableTimeCode            :1;                          /**< [in]: Set to 1 to enable writing of clock timestamp sets in picture timing SEI.  Note that this flag will be ignored for D3D12 interface. */
-    uint32_t reservedBitFields         :10;                         /**< [in]: Reserved bitfields and must be set to 0 */
+    uint32_t enableTimeCode            : 1;                         /**< [in]: Set to 1 to enable writing of clock timestamp sets in picture timing SEI.  Note that this flag will be ignored for D3D12 interface. */
+    uint32_t reservedBitFields         : 10;                        /**< [in]: Reserved bitfields and must be set to 0 */
     uint32_t level;                                                 /**< [in]: Specifies the encoding level. Client is recommended to set this to NV_ENC_LEVEL_AUTOSELECT in order to enable the NvEncodeAPI interface to select the correct level. */
     uint32_t idrPeriod;                                             /**< [in]: Specifies the IDR interval. If not set, this is made equal to gopLength in NV_ENC_CONFIG.Low latency application client can set IDR interval to NVENC_INFINITE_GOPLENGTH so that IDR frames are not inserted automatically. */
     uint32_t separateColourPlaneFlag;                               /**< [in]: Set to 1 to enable 4:4:4 separate colour planes */
@@ -1772,24 +1772,24 @@ typedef struct _NV_ENC_CONFIG_HEVC
     uint32_t tier;                                                  /**< [in]: Specifies the level tier of the encoded bitstream.*/
     NV_ENC_HEVC_CUSIZE minCUSize;                                   /**< [in]: Specifies the minimum size of luma coding unit.*/
     NV_ENC_HEVC_CUSIZE maxCUSize;                                   /**< [in]: Specifies the maximum size of luma coding unit. Currently NVENC SDK only supports maxCUSize equal to NV_ENC_HEVC_CUSIZE_32x32.*/
-    uint32_t useConstrainedIntraPred               :1;              /**< [in]: Set 1 to enable constrained intra prediction. */
-    uint32_t disableDeblockAcrossSliceBoundary     :1;              /**< [in]: Set 1 to disable in loop filtering across slice boundary.*/
-    uint32_t outputBufferingPeriodSEI              :1;              /**< [in]: Set 1 to write SEI buffering period syntax in the bitstream */
-    uint32_t outputPictureTimingSEI                :1;              /**< [in]: Set 1 to write SEI picture timing syntax in the bitstream */
-    uint32_t outputAUD                             :1;              /**< [in]: Set 1 to write Access Unit Delimiter syntax. */
-    uint32_t enableLTR                             :1;              /**< [in]: Set to 1 to enable LTR (Long Term Reference) frame support. LTR can be used in two modes: "LTR Trust" mode and "LTR Per Picture" mode.
+    uint32_t useConstrainedIntraPred               : 1;             /**< [in]: Set 1 to enable constrained intra prediction. */
+    uint32_t disableDeblockAcrossSliceBoundary     : 1;             /**< [in]: Set 1 to disable in loop filtering across slice boundary.*/
+    uint32_t outputBufferingPeriodSEI              : 1;             /**< [in]: Set 1 to write SEI buffering period syntax in the bitstream */
+    uint32_t outputPictureTimingSEI                : 1;             /**< [in]: Set 1 to write SEI picture timing syntax in the bitstream */
+    uint32_t outputAUD                             : 1;             /**< [in]: Set 1 to write Access Unit Delimiter syntax. */
+    uint32_t enableLTR                             : 1;             /**< [in]: Set to 1 to enable LTR (Long Term Reference) frame support. LTR can be used in two modes: "LTR Trust" mode and "LTR Per Picture" mode.
                                                                                LTR Trust mode: In this mode, ltrNumFrames pictures after IDR are automatically marked as LTR. This mode is enabled by setting ltrTrustMode = 1.
                                                                                                Use of LTR Trust mode is strongly discouraged as this mode may be deprecated in future releases.
                                                                                LTR Per Picture mode: In this mode, client can control whether the current picture should be marked as LTR. Enable this mode by setting
                                                                                                      ltrTrustMode = 0 and ltrMarkFrame = 1 for the picture to be marked as LTR. This is the preferred mode
                                                                                                      for using LTR.
                                                                                Note that LTRs are not supported if encoding session is configured with B-frames */
-    uint32_t disableSPSPPS                         :1;              /**< [in]: Set 1 to disable VPS, SPS and PPS signaling in the bitstream. */
-    uint32_t repeatSPSPPS                          :1;              /**< [in]: Set 1 to output VPS,SPS and PPS for every IDR frame.*/
-    uint32_t enableIntraRefresh                    :1;              /**< [in]: Set 1 to enable gradual decoder refresh or intra refresh. If the GOP structure uses B frames this will be ignored */
-    uint32_t chromaFormatIDC                       :2;              /**< [in]: Specifies the chroma format. Should be set to 1 for yuv420 input, 3 for yuv444 input.*/
-    uint32_t pixelBitDepthMinus8                   :3;              /**< [in]: Specifies pixel bit depth minus 8. Should be set to 0 for 8 bit input, 2 for 10 bit input.*/
-    uint32_t enableFillerDataInsertion             :1;              /**< [in]: Set to 1 to enable insertion of filler data in the bitstream.
+    uint32_t disableSPSPPS                         : 1;             /**< [in]: Set 1 to disable VPS, SPS and PPS signaling in the bitstream. */
+    uint32_t repeatSPSPPS                          : 1;             /**< [in]: Set 1 to output VPS,SPS and PPS for every IDR frame.*/
+    uint32_t enableIntraRefresh                    : 1;             /**< [in]: Set 1 to enable gradual decoder refresh or intra refresh. If the GOP structure uses B frames this will be ignored */
+    uint32_t chromaFormatIDC                       : 2;             /**< [in]: Specifies the chroma format. Should be set to 1 for yuv420 input, 3 for yuv444 input.*/
+    uint32_t pixelBitDepthMinus8                   : 3;             /**< [in]: Specifies pixel bit depth minus 8. Should be set to 0 for 8 bit input, 2 for 10 bit input.*/
+    uint32_t enableFillerDataInsertion             : 1;             /**< [in]: Set to 1 to enable insertion of filler data in the bitstream.
                                                                                This flag will take effect only when CBR rate control mode is in use and both
                                                                                NV_ENC_INITIALIZE_PARAMS::frameRateNum and
                                                                                NV_ENC_INITIALIZE_PARAMS::frameRateDen are set to non-zero
@@ -1797,16 +1797,16 @@ typedef struct _NV_ENC_CONFIG_HEVC
                                                                                NV_ENC_INITIALIZE_PARAMS::enableOutputInVidmem is also set
                                                                                is currently not supported and will make ::NvEncInitializeEncoder()
                                                                                return an error. */
-    uint32_t enableConstrainedEncoding             :1;              /**< [in]: Set this to 1 to enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices.
+    uint32_t enableConstrainedEncoding             : 1;             /**< [in]: Set this to 1 to enable constrainedFrame encoding where each slice in the constrained picture is independent of other slices.
                                                                                Constrained encoding works only with rectangular slices.
                                                                                Check support for constrained encoding using ::NV_ENC_CAPS_SUPPORT_CONSTRAINED_ENCODING caps. */
-    uint32_t enableAlphaLayerEncoding              :1;              /**< [in]: Set this to 1 to enable HEVC encode with alpha layer. */
-    uint32_t singleSliceIntraRefresh               :1;              /**< [in]: Set this to 1 to maintain single slice frames during intra refresh.
+    uint32_t enableAlphaLayerEncoding              : 1;             /**< [in]: Set this to 1 to enable HEVC encode with alpha layer. */
+    uint32_t singleSliceIntraRefresh               : 1;             /**< [in]: Set this to 1 to maintain single slice frames during intra refresh.
                                                                                Check support for single slice intra refresh using ::NV_ENC_CAPS_SINGLE_SLICE_INTRA_REFRESH caps.
                                                                                This flag will be ignored if the value returned for ::NV_ENC_CAPS_SINGLE_SLICE_INTRA_REFRESH caps is false. */
-    uint32_t outputRecoveryPointSEI                :1;              /**< [in]: Set to 1 to enable writing of recovery point SEI message */
-    uint32_t outputTimeCodeSEI                     :1;              /**< [in]: Set 1 to write SEI time code syntax in the bitstream. Note that this flag will be ignored for D3D12 interface.*/
-    uint32_t reserved                              :12;             /**< [in]: Reserved bitfields.*/
+    uint32_t outputRecoveryPointSEI                : 1;             /**< [in]: Set to 1 to enable writing of recovery point SEI message */
+    uint32_t outputTimeCodeSEI                     : 1;             /**< [in]: Set 1 to write SEI time code syntax in the bitstream. Note that this flag will be ignored for D3D12 interface.*/
+    uint32_t reserved                              : 12;            /**< [in]: Reserved bitfields.*/
     uint32_t idrPeriod;                                             /**< [in]: Specifies the IDR interval. If not set, this is made equal to gopLength in NV_ENC_CONFIG. Low latency application client can set IDR interval to NVENC_INFINITE_GOPLENGTH so that IDR frames are not inserted automatically. */
     uint32_t intraRefreshPeriod;                                    /**< [in]: Specifies the interval between successive intra refresh if enableIntrarefresh is set. Requires enableIntraRefresh to be set.
                                                                     Will be disabled if NV_ENC_CONFIG::gopLength is not set to NVENC_INFINITE_GOPLENGTH. */
@@ -1854,18 +1854,18 @@ typedef struct _NV_ENC_CONFIG_HEVC
 
 typedef struct _NV_ENC_FILM_GRAIN_PARAMS_AV1
 {
-    uint32_t applyGrain                 :1;                         /**< [in]: Set to 1 to specify film grain should be added to frame */
-    uint32_t chromaScalingFromLuma      :1;                         /**< [in]: Set to 1 to specify the chroma scaling is inferred from luma scaling */
-    uint32_t overlapFlag                :1;                         /**< [in]: Set to 1 to indicate that overlap between film grain blocks should be applied*/
-    uint32_t clipToRestrictedRange      :1;                         /**< [in]: Set to 1 to clip values to restricted (studio) range after adding film grain  */
-    uint32_t grainScalingMinus8         :2;                         /**< [in]: Represents the shift - 8 applied to the values of the chroma component */
-    uint32_t arCoeffLag                 :2;                         /**< [in]: Specifies the number of auto-regressive coefficients for luma and chroma */
-    uint32_t numYPoints                 :4;                         /**< [in]: Specifies the number of points for the piecewise linear scaling function of the luma component */
-    uint32_t numCbPoints                :4;                         /**< [in]: Specifies the number of points for the piecewise linear scaling function of the cb component */
-    uint32_t numCrPoints                :4;                         /**< [in]: Specifies the number of points for the piecewise linear scaling function of the cr component */
-    uint32_t arCoeffShiftMinus6         :2;                         /**< [in]: specifies the range of the auto-regressive coefficients */
-    uint32_t grainScaleShift            :2;                         /**< [in]: Specifies how much the Gaussian random numbers should be scaled down during the grain synthesi process  */
-    uint32_t reserved1                  :8;                         /**< [in]: Reserved bits field - should be set to 0 */
+    uint32_t applyGrain                 : 1;                        /**< [in]: Set to 1 to specify film grain should be added to frame */
+    uint32_t chromaScalingFromLuma      : 1;                        /**< [in]: Set to 1 to specify the chroma scaling is inferred from luma scaling */
+    uint32_t overlapFlag                : 1;                        /**< [in]: Set to 1 to indicate that overlap between film grain blocks should be applied*/
+    uint32_t clipToRestrictedRange      : 1;                        /**< [in]: Set to 1 to clip values to restricted (studio) range after adding film grain  */
+    uint32_t grainScalingMinus8         : 2;                        /**< [in]: Represents the shift - 8 applied to the values of the chroma component */
+    uint32_t arCoeffLag                 : 2;                        /**< [in]: Specifies the number of auto-regressive coefficients for luma and chroma */
+    uint32_t numYPoints                 : 4;                        /**< [in]: Specifies the number of points for the piecewise linear scaling function of the luma component */
+    uint32_t numCbPoints                : 4;                        /**< [in]: Specifies the number of points for the piecewise linear scaling function of the cb component */
+    uint32_t numCrPoints                : 4;                        /**< [in]: Specifies the number of points for the piecewise linear scaling function of the cr component */
+    uint32_t arCoeffShiftMinus6         : 2;                        /**< [in]: specifies the range of the auto-regressive coefficients */
+    uint32_t grainScaleShift            : 2;                        /**< [in]: Specifies how much the Gaussian random numbers should be scaled down during the grain synthesi process  */
+    uint32_t reserved1                  : 8;                        /**< [in]: Reserved bits field - should be set to 0 */
     uint8_t  pointYValue[14];                                       /**< [in]: pointYValue[i]: x coordinate for i-th point of luma piecewise linear scaling function. Values on a scale of 0...255 */
     uint8_t  pointYScaling[14];                                     /**< [in]: pointYScaling[i]: i-th point output value of luma piecewise linear scaling function */
     uint8_t  pointCbValue[10];                                      /**< [in]: pointCbValue[i]: x coordinate for i-th point of cb piecewise linear scaling function. Values on a scale of 0...255 */
@@ -1950,13 +1950,13 @@ typedef struct _NV_ENC_CONFIG_AV1
  */
 typedef struct _NV_ENC_CONFIG_H264_MEONLY
 {
-    uint32_t disablePartition16x16 :1;                          /**< [in]: Disable Motion Estimation on 16x16 blocks*/
-    uint32_t disablePartition8x16  :1;                          /**< [in]: Disable Motion Estimation on 8x16 blocks*/
-    uint32_t disablePartition16x8  :1;                          /**< [in]: Disable Motion Estimation on 16x8 blocks*/
-    uint32_t disablePartition8x8   :1;                          /**< [in]: Disable Motion Estimation on 8x8 blocks*/
-    uint32_t disableIntraSearch    :1;                          /**< [in]: Disable Intra search during Motion Estimation*/
-    uint32_t bStereoEnable         :1;                          /**< [in]: Enable Stereo Mode for Motion Estimation where each view is independently executed*/
-    uint32_t reserved              :26;                         /**< [in]: Reserved and must be set to 0 */
+    uint32_t disablePartition16x16 : 1;                         /**< [in]: Disable Motion Estimation on 16x16 blocks*/
+    uint32_t disablePartition8x16  : 1;                         /**< [in]: Disable Motion Estimation on 8x16 blocks*/
+    uint32_t disablePartition16x8  : 1;                         /**< [in]: Disable Motion Estimation on 16x8 blocks*/
+    uint32_t disablePartition8x8   : 1;                         /**< [in]: Disable Motion Estimation on 8x8 blocks*/
+    uint32_t disableIntraSearch    : 1;                         /**< [in]: Disable Intra search during Motion Estimation*/
+    uint32_t bStereoEnable         : 1;                         /**< [in]: Enable Stereo Mode for Motion Estimation where each view is independently executed*/
+    uint32_t reserved              : 26;                        /**< [in]: Reserved and must be set to 0 */
     uint32_t reserved1 [255];                                   /**< [in]: Reserved and must be set to 0 */
     void*    reserved2[64];                                     /**< [in]: Reserved and must be set to NULL */
 } NV_ENC_CONFIG_H264_MEONLY;
