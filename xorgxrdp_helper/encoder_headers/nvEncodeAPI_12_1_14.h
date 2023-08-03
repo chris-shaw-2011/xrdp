@@ -3835,7 +3835,7 @@ NVENCSTATUS NVENCAPI NvEncGetSequenceParams                     (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncGetSequenceParamEx                     (void* encoder, NV_ENC_INITIALIZE_PARAMS* encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
+NVENCSTATUS NVENCAPI NvEncGetSequenceParamEx                     (void *encoder, NV_ENC_INITIALIZE_PARAMS *encInitParams, NV_ENC_SEQUENCE_PARAM_PAYLOAD* sequenceParamPayload);
 
 // NvEncRegisterAsyncEvent
 /**
@@ -3866,7 +3866,7 @@ NVENCSTATUS NVENCAPI NvEncGetSequenceParamEx                     (void* encoder,
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncRegisterAsyncEvent                    (void* encoder, NV_ENC_EVENT_PARAMS* eventParams);
+NVENCSTATUS NVENCAPI NvEncRegisterAsyncEvent                    (void *encoder, NV_ENC_EVENT_PARAMS *eventParams);
 
 
 // NvEncUnregisterAsyncEvent
@@ -3895,7 +3895,7 @@ NVENCSTATUS NVENCAPI NvEncRegisterAsyncEvent                    (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncUnregisterAsyncEvent                  (void* encoder, NV_ENC_EVENT_PARAMS* eventParams);
+NVENCSTATUS NVENCAPI NvEncUnregisterAsyncEvent                  (void *encoder, NV_ENC_EVENT_PARAMS *eventParams);
 
 
 // NvEncMapInputResource
@@ -3934,7 +3934,7 @@ NVENCSTATUS NVENCAPI NvEncUnregisterAsyncEvent                  (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncMapInputResource                         (void* encoder, NV_ENC_MAP_INPUT_RESOURCE* mapInputResParams);
+NVENCSTATUS NVENCAPI NvEncMapInputResource                         (void *encoder, NV_ENC_MAP_INPUT_RESOURCE *mapInputResParams);
 
 
 // NvEncUnmapInputResource
@@ -3969,7 +3969,7 @@ NVENCSTATUS NVENCAPI NvEncMapInputResource                         (void* encode
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncUnmapInputResource                         (void* encoder, NV_ENC_INPUT_PTR mappedInputBuffer);
+NVENCSTATUS NVENCAPI NvEncUnmapInputResource                         (void *encoder, NV_ENC_INPUT_PTR mappedInputBuffer);
 
 // NvEncDestroyEncoder
 /**
@@ -3999,7 +3999,7 @@ NVENCSTATUS NVENCAPI NvEncUnmapInputResource                         (void* enco
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncDestroyEncoder                        (void* encoder);
+NVENCSTATUS NVENCAPI NvEncDestroyEncoder                        (void *encoder);
 
 // NvEncInvalidateRefFrames
 /**
@@ -4032,7 +4032,7 @@ NVENCSTATUS NVENCAPI NvEncDestroyEncoder                        (void* encoder);
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncInvalidateRefFrames(void* encoder, uint64_t invalidRefFrameTimeStamp);
+NVENCSTATUS NVENCAPI NvEncInvalidateRefFrames(void *encoder, uint64_t invalidRefFrameTimeStamp);
 
 // NvEncOpenEncodeSessionEx
 /**
@@ -4062,7 +4062,7 @@ NVENCSTATUS NVENCAPI NvEncInvalidateRefFrames(void* encoder, uint64_t invalidRef
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncOpenEncodeSessionEx                   (NV_ENC_OPEN_ENCODE_SESSION_EX_PARAMS *openSessionExParams, void** encoder);
+NVENCSTATUS NVENCAPI NvEncOpenEncodeSessionEx                   (NV_ENC_OPEN_ENCODE_SESSION_EX_PARAMS *openSessionExParams, void **encoder);
 
 // NvEncRegisterResource
 /**
@@ -4092,7 +4092,7 @@ NVENCSTATUS NVENCAPI NvEncOpenEncodeSessionEx                   (NV_ENC_OPEN_ENC
  * ::NV_ENC_ERR_UNIMPLEMENTED \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncRegisterResource                      (void* encoder, NV_ENC_REGISTER_RESOURCE* registerResParams);
+NVENCSTATUS NVENCAPI NvEncRegisterResource                      (void *encoder, NV_ENC_REGISTER_RESOURCE *registerResParams);
 
 // NvEncUnregisterResource
 /**
@@ -4123,7 +4123,7 @@ NVENCSTATUS NVENCAPI NvEncRegisterResource                      (void* encoder, 
  * ::NV_ENC_ERR_UNIMPLEMENTED \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncUnregisterResource                    (void* encoder, NV_ENC_REGISTERED_PTR registeredResource);
+NVENCSTATUS NVENCAPI NvEncUnregisterResource                    (void *encoder, NV_ENC_REGISTERED_PTR registeredResource);
 
 // NvEncReconfigureEncoder
 /**
@@ -4157,7 +4157,7 @@ NVENCSTATUS NVENCAPI NvEncUnregisterResource                    (void* encoder, 
  * ::NV_ENC_ERR_GENERIC \n
  *
  */
-NVENCSTATUS NVENCAPI NvEncReconfigureEncoder                   (void *encoder, NV_ENC_RECONFIGURE_PARAMS* reInitEncodeParams);
+NVENCSTATUS NVENCAPI NvEncReconfigureEncoder                   (void *encoder, NV_ENC_RECONFIGURE_PARAMS *reInitEncodeParams);
 
 
 
@@ -4188,7 +4188,7 @@ NVENCSTATUS NVENCAPI NvEncReconfigureEncoder                   (void *encoder, N
  * ::NV_ENC_ERR_INVALID_VERSION \n
  * ::NV_ENC_ERR_GENERIC \n
  */
-NVENCSTATUS NVENCAPI NvEncCreateMVBuffer                        (void* encoder, NV_ENC_CREATE_MV_BUFFER* createMVBufferParams);
+NVENCSTATUS NVENCAPI NvEncCreateMVBuffer                        (void *encoder, NV_ENC_CREATE_MV_BUFFER *createMVBufferParams);
 
 
 // NvEncDestroyMVBuffer
@@ -4216,7 +4216,7 @@ NVENCSTATUS NVENCAPI NvEncCreateMVBuffer                        (void* encoder, 
  * ::NV_ENC_ERR_ENCODER_NOT_INITIALIZED \n
  * ::NV_ENC_ERR_GENERIC \n
  */
-NVENCSTATUS NVENCAPI NvEncDestroyMVBuffer                       (void* encoder, NV_ENC_OUTPUT_PTR mvBuffer);
+NVENCSTATUS NVENCAPI NvEncDestroyMVBuffer                       (void *encoder, NV_ENC_OUTPUT_PTR mvBuffer);
 
 
 // NvEncRunMotionEstimationOnly
@@ -4247,7 +4247,7 @@ NVENCSTATUS NVENCAPI NvEncDestroyMVBuffer                       (void* encoder, 
  * ::NV_ENC_ERR_ENCODER_NOT_INITIALIZED \n
  * ::NV_ENC_ERR_GENERIC \n
  */
-NVENCSTATUS NVENCAPI NvEncRunMotionEstimationOnly               (void* encoder, NV_ENC_MEONLY_PARAMS* meOnlyParams);
+NVENCSTATUS NVENCAPI NvEncRunMotionEstimationOnly               (void *encoder, NV_ENC_MEONLY_PARAMS *meOnlyParams);
 
 // NvEncodeAPIGetMaxSupportedVersion
 /**
@@ -4265,7 +4265,7 @@ NVENCSTATUS NVENCAPI NvEncRunMotionEstimationOnly               (void* encoder, 
  * ::NV_ENC_SUCCESS \n
  * ::NV_ENC_ERR_INVALID_PTR \n
  */
-NVENCSTATUS NVENCAPI NvEncodeAPIGetMaxSupportedVersion          (uint32_t* version);
+NVENCSTATUS NVENCAPI NvEncodeAPIGetMaxSupportedVersion          (uint32_t *version);
 
 
 // NvEncGetLastErrorString
@@ -4281,13 +4281,13 @@ NVENCSTATUS NVENCAPI NvEncodeAPIGetMaxSupportedVersion          (uint32_t* versi
  * \return
  *   Pointer to buffer containing the details of the last error encountered by the API.
  */
-const char * NVENCAPI NvEncGetLastErrorString          (void* encoder);
+const char *NVENCAPI NvEncGetLastErrorString          (void *encoder);
 
 // NvEncLookaheadPicture
 /**
  * \brief Submit an input picture for lookahead.
  *
- * This function can be used by clients to submit input frame for lookahead. Client could call this function 
+ * This function can be used by clients to submit input frame for lookahead. Client could call this function
  * NV_ENC_INITIALIZE_PARAMS::lookaheadDepth plus one number of frames, before calling NvEncEncodePicture() for the first frame.
  *
  * \param [in] encoder
@@ -4297,7 +4297,7 @@ const char * NVENCAPI NvEncGetLastErrorString          (void* encoder);
  *
  * \return
  * ::NV_ENC_SUCCESS \n
- * ::NV_ENC_NEED_MORE_INPUT \n  should we return this error is lookahead queue is not full? 
+ * ::NV_ENC_NEED_MORE_INPUT \n  should we return this error is lookahead queue is not full?
  * ::NV_ENC_ERR_INVALID_PTR \n
  * ::NV_ENC_ERR_ENCODER_NOT_INITIALIZED \n
  * ::NV_ENC_ERR_GENERIC \n
@@ -4308,7 +4308,7 @@ const char * NVENCAPI NvEncGetLastErrorString          (void* encoder);
  * ::NV_ENC_ERR_INVALID_PARAM \n
  * ::NV_ENC_ERR_INVALID_VERSION \n
  */
-NVENCSTATUS NVENCAPI NvEncLookaheadPicture          (void* encoder, NV_ENC_LOOKAHEAD_PIC_PARAMS *lookaheadParamas);
+NVENCSTATUS NVENCAPI NvEncLookaheadPicture          (void *encoder, NV_ENC_LOOKAHEAD_PIC_PARAMS *lookaheadParamas);
 
 /// \cond API PFN
 /*
