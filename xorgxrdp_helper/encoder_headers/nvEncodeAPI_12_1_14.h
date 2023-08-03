@@ -106,10 +106,10 @@ typedef struct _NVENC_RECT
 
 /** @} */ /* End of GUID and NVENC_RECT structure grouping*/
 
-typedef void* NV_ENC_INPUT_PTR;             /**< NVENCODE API input buffer                              */
-typedef void* NV_ENC_OUTPUT_PTR;            /**< NVENCODE API output buffer*/
-typedef void* NV_ENC_REGISTERED_PTR;        /**< A Resource that has been registered with NVENCODE API*/
-typedef void* NV_ENC_CUSTREAM_PTR;          /**< Pointer to CUstream*/
+typedef void *NV_ENC_INPUT_PTR;             /**< NVENCODE API input buffer                              */
+typedef void *NV_ENC_OUTPUT_PTR;            /**< NVENCODE API output buffer*/
+typedef void *NV_ENC_REGISTERED_PTR;        /**< A Resource that has been registered with NVENCODE API*/
+typedef void *NV_ENC_CUSTREAM_PTR;          /**< Pointer to CUstream*/
 
 #define NVENCAPI_MAJOR_VERSION 12
 #define NVENCAPI_MINOR_VERSION 1
@@ -285,9 +285,9 @@ typedef enum _NV_ENC_STATE_RESTORE_TYPE
 typedef enum _NV_ENC_OUTPUT_STATS_LEVEL
 {
     NV_ENC_OUTPUT_STATS_NONE          = 0,             /** No output stats */
-    NV_ENC_OUTPUT_STATS_BLOCK_LEVEL   = 1,             /** Output stats for every block. 
+    NV_ENC_OUTPUT_STATS_BLOCK_LEVEL   = 1,             /** Output stats for every block.
                                                            Block represents a CTB for HEVC, macroblock for H.264, super block for AV1 */
-    NV_ENC_OUTPUT_STATS_ROW_LEVEL     = 2,             /** Output stats for every row. 
+    NV_ENC_OUTPUT_STATS_ROW_LEVEL     = 2,             /** Output stats for every row.
                                                            Row represents a CTB row for HEVC, macroblock row for H.264, super block row for AV1 */
 } NV_ENC_OUTPUT_STATS_LEVEL;
 
@@ -480,7 +480,7 @@ typedef enum _NV_ENC_LEVEL
     NV_ENC_LEVEL_AV1_71             = 21,
     NV_ENC_LEVEL_AV1_72             = 22,
     NV_ENC_LEVEL_AV1_73             = 23,
-    NV_ENC_LEVEL_AV1_AUTOSELECT         ,
+    NV_ENC_LEVEL_AV1_AUTOSELECT,
 
     NV_ENC_TIER_AV1_0               = 0,
     NV_ENC_TIER_AV1_1               = 1
@@ -655,13 +655,13 @@ typedef enum _NVENCSTATUS
      * that has not been successfully mapped.
      */
     NV_ENC_ERR_RESOURCE_NOT_MAPPED,
-    
+
     /**
      * This indicates encode driver requires more output buffers to write an output
      * bitstream. If this error is returned from ::NvEncRestoreEncoderState() API, this
      * is not a fatal error. If the client is encoding with B frames then,
      * ::NvEncRestoreEncoderState() API might be requiring the extra output buffer for accomodating overlay frame output in a separate buffer, for AV1 codec.
-     * In this case, client must call NvEncRestoreEncoderState() API again with NV_ENC_RESTORE_ENCODER_STATE_PARAMS::outputBitstream as input along with 
+     * In this case, client must call NvEncRestoreEncoderState() API again with NV_ENC_RESTORE_ENCODER_STATE_PARAMS::outputBitstream as input along with
      * the parameters in the previous call. When operating in asynchronous mode of encoding, client must also specify NV_ENC_RESTORE_ENCODER_STATE_PARAMS::completionEvent.
      */
     NV_ENC_ERR_NEED_MORE_OUTPUT,
@@ -679,8 +679,8 @@ typedef enum _NV_ENC_PIC_FLAGS
                                                      [_NV_ENC_INITIALIZE_PARAMS::enablePTD == 1]. */
     NV_ENC_PIC_FLAG_OUTPUT_SPSPPS      = 0x4,   /**< Write the sequence and picture header in encoded bitstream of the current picture */
     NV_ENC_PIC_FLAG_EOS                = 0x8,   /**< Indicates end of the input stream */
-    NV_ENC_PIC_FLAG_DISABLE_ENC_STATE_ADVANCE = 0x10,  /**< Do not advance encoder state during encode */ 
-    NV_ENC_PIC_FLAG_OUTPUT_RECON_FRAME        = 0x20,  /**< Write reconstructed frame */ 
+    NV_ENC_PIC_FLAG_DISABLE_ENC_STATE_ADVANCE = 0x10,  /**< Do not advance encoder state during encode */
+    NV_ENC_PIC_FLAG_OUTPUT_RECON_FRAME        = 0x20,  /**< Write reconstructed frame */
 } NV_ENC_PIC_FLAGS;
 
 /**
@@ -832,7 +832,7 @@ typedef enum _NV_ENC_CAPS
      * \n 1 : Interlaced field mode encoding is supported.
      * \n 2 : Interlaced frame encoding and field mode encoding are both supported.
      */
-     NV_ENC_CAPS_SUPPORT_FIELD_ENCODING,
+    NV_ENC_CAPS_SUPPORT_FIELD_ENCODING,
 
     /**
      * Indicates HW support for monochrome mode encoding.
@@ -1057,7 +1057,7 @@ typedef enum _NV_ENC_CAPS
      */
     NV_ENC_CAPS_SUPPORT_LOSSLESS_ENCODE,
 
-     /**
+    /**
      * Indicates HW support for Sample Adaptive Offset.
      * \n 0 : SAO not supported.
      * \n 1 : SAO encoding supported.
@@ -1115,7 +1115,7 @@ typedef enum _NV_ENC_CAPS
      */
     NV_ENC_CAPS_DYNAMIC_QUERY_ENCODER_CAPACITY,
 
-     /**
+    /**
      * Indicates B as reference support.
      * \n 0 : B as reference is not supported.
      * \n 1 : each B-Frame as reference is supported.
@@ -1182,7 +1182,7 @@ typedef enum _NV_ENC_CAPS
      */
     NV_ENC_CAPS_OUTPUT_ROW_STATS,
 
-     /**
+    /**
      * Reserved - Not to be used by clients.
      */
     NV_ENC_CAPS_EXPOSED_COUNT
@@ -1199,7 +1199,7 @@ typedef enum _NV_ENC_HEVC_CUSIZE
     NV_ENC_HEVC_CUSIZE_16x16      = 2,
     NV_ENC_HEVC_CUSIZE_32x32      = 3,
     NV_ENC_HEVC_CUSIZE_64x64      = 4,
-}NV_ENC_HEVC_CUSIZE;
+} NV_ENC_HEVC_CUSIZE;
 
 /**
 *  AV1 PART SIZE
@@ -1212,7 +1212,7 @@ typedef enum _NV_ENC_AV1_PART_SIZE
     NV_ENC_AV1_PART_SIZE_16x16         = 3,
     NV_ENC_AV1_PART_SIZE_32x32         = 4,
     NV_ENC_AV1_PART_SIZE_64x64         = 5,
-}NV_ENC_AV1_PART_SIZE;
+} NV_ENC_AV1_PART_SIZE;
 
 /**
 *  Enums related to fields in VUI parameters.
@@ -1225,7 +1225,7 @@ typedef enum _NV_ENC_VUI_VIDEO_FORMAT
     NV_ENC_VUI_VIDEO_FORMAT_SECAM       = 3,
     NV_ENC_VUI_VIDEO_FORMAT_MAC         = 4,
     NV_ENC_VUI_VIDEO_FORMAT_UNSPECIFIED = 5,
-}NV_ENC_VUI_VIDEO_FORMAT;
+} NV_ENC_VUI_VIDEO_FORMAT;
 
 typedef enum _NV_ENC_VUI_COLOR_PRIMARIES
 {
@@ -1243,7 +1243,7 @@ typedef enum _NV_ENC_VUI_COLOR_PRIMARIES
     NV_ENC_VUI_COLOR_PRIMARIES_SMPTE431    = 11,
     NV_ENC_VUI_COLOR_PRIMARIES_SMPTE432    = 12,
     NV_ENC_VUI_COLOR_PRIMARIES_JEDEC_P22   = 22,
-}NV_ENC_VUI_COLOR_PRIMARIES;
+} NV_ENC_VUI_COLOR_PRIMARIES;
 
 typedef enum _NV_ENC_VUI_TRANSFER_CHARACTERISTIC
 {
@@ -1266,7 +1266,7 @@ typedef enum _NV_ENC_VUI_TRANSFER_CHARACTERISTIC
     NV_ENC_VUI_TRANSFER_CHARACTERISTIC_SMPTE2084     = 16,
     NV_ENC_VUI_TRANSFER_CHARACTERISTIC_SMPTE428      = 17,
     NV_ENC_VUI_TRANSFER_CHARACTERISTIC_ARIB_STD_B67  = 18,
-}NV_ENC_VUI_TRANSFER_CHARACTERISTIC;
+} NV_ENC_VUI_TRANSFER_CHARACTERISTIC;
 
 typedef enum _NV_ENC_VUI_MATRIX_COEFFS
 {
@@ -1282,7 +1282,7 @@ typedef enum _NV_ENC_VUI_MATRIX_COEFFS
     NV_ENC_VUI_MATRIX_COEFFS_BT2020_NCL  = 9,
     NV_ENC_VUI_MATRIX_COEFFS_BT2020_CL   = 10,
     NV_ENC_VUI_MATRIX_COEFFS_SMPTE2085   = 11,
-}NV_ENC_VUI_MATRIX_COEFFS;
+} NV_ENC_VUI_MATRIX_COEFFS;
 
 /**
  * Input struct for querying Encoding capabilities.
@@ -1306,8 +1306,8 @@ typedef struct _NV_ENC_RESTORE_ENCODER_STATE_PARAMS
     uint32_t                  version;                 /**< [in]: Struct version. */
     uint32_t                  bufferIdx;               /**< [in]: State buffer index to which the encoder state will be restored */
     NV_ENC_STATE_RESTORE_TYPE state;                   /**< [in]: State type to restore */
-    NV_ENC_OUTPUT_PTR         outputBitstream;         /**< [in]: Specifies the output buffer pointer, for AV1 encode only. 
-                                                                  Application must call NvEncRestoreEncoderState() API with _NV_ENC_RESTORE_ENCODER_STATE_PARAMS::outputBitstream and 
+    NV_ENC_OUTPUT_PTR         outputBitstream;         /**< [in]: Specifies the output buffer pointer, for AV1 encode only.
+                                                                  Application must call NvEncRestoreEncoderState() API with _NV_ENC_RESTORE_ENCODER_STATE_PARAMS::outputBitstream and
                                                                   _NV_ENC_RESTORE_ENCODER_STATE_PARAMS::completionEvent as input when an earlier call to this API returned "NV_ENC_ERR_NEED_MORE_OUTPUT", for AV1 encode. */
     void*                     completionEvent;         /**< [in]: Specifies the completion event when asynchronous mode of encoding is enabled. Used for AV1 encode only. */
     uint32_t                  reserved1[64];           /**< [in]: Reserved and must be set to 0 */
