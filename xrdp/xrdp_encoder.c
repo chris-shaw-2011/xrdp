@@ -618,10 +618,8 @@ build_rfx_avc420_metablock(struct stream *s, short *rrects, int rcount,
     return comp_bytes_pre;
 }
 
-/*****************************************************************************/
-/* called from encoder thread */
 static int
-process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
+build_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
 {
     int index;
     int x;
@@ -843,6 +841,14 @@ process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
     g_set_wait_obj(event_processed);
 
     return 0;
+}
+
+/*****************************************************************************/
+/* called from encoder thread */
+static int
+process_enc_h264(struct xrdp_encoder *self, XRDP_ENC_DATA *enc)
+{
+    return build_enc_h264(self, enc);
 }
 
 #else
