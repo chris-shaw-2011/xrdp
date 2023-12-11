@@ -1643,8 +1643,8 @@ xrdp_wm_key_sync(struct xrdp_wm *self, int device_flags, int key_flags)
     {
         if (self->mm->mod->mod_event != 0)
         {
-            self->mm->mod->mod_event(self->mm->mod, 17, key_flags, device_flags,
-                                     key_flags, device_flags);
+            self->mm->mod->mod_event(self->mm->mod, WM_KEYBRD_SYNC, key_flags,
+                                     device_flags, key_flags, device_flags);
         }
     }
 
@@ -1652,8 +1652,8 @@ xrdp_wm_key_sync(struct xrdp_wm *self, int device_flags, int key_flags)
 }
 
 /*****************************************************************************/
-int
-xrdp_wm_key_unicode(struct xrdp_wm *self, int device_flags, int unicode)
+static int
+xrdp_wm_key_unicode(struct xrdp_wm *self, int device_flags, char32_t unicode)
 {
     int index;
 
@@ -1953,8 +1953,8 @@ xrdp_wm_process_channel_data(struct xrdp_wm *self,
         {
             if (self->mm->mod->mod_event != 0)
             {
-                rv = self->mm->mod->mod_event(self->mm->mod, 0x5555, param1, param2,
-                                              param3, param4);
+                rv = self->mm->mod->mod_event(self->mm->mod, WM_CHANNEL_DATA,
+                                              param1, param2, param3, param4);
             }
         }
     }
@@ -2043,7 +2043,8 @@ xrdp_wm_login_state_changed(struct xrdp_wm *self)
         return 0;
     }
 
-    LOG(LOG_LEVEL_DEBUG, "xrdp_wm_login_mode_changed: login_mode is %d", self->login_state);
+    LOG(LOG_LEVEL_DEBUG, "Login state has changed to %s",
+        xrdp_wm_login_state_to_str(self->login_state));
     if (self->login_state == WMLS_RESET)
     {
         list_clear(self->log);

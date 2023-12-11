@@ -55,6 +55,8 @@ g_set_sync1_mutex(long mutex);
 void
 g_set_term_event(tbus event);
 void
+g_set_sigchld_event(tbus event);
+void
 g_set_sync_event(tbus event);
 long
 g_get_threadid(void);
@@ -62,10 +64,14 @@ void
 g_set_threadid(long id);
 tbus
 g_get_term(void);
+tbus
+g_get_sigchld(void);
 int
 g_is_term(void);
 void
 g_set_term(int in_val);
+void
+g_set_sigchld(int in_val);
 tbus
 g_get_sync_event(void);
 void
@@ -327,6 +333,17 @@ xrdp_painter_draw_bitmap(struct xrdp_painter *self,
                          int x, int y, int cx, int cy);
 int
 xrdp_painter_text_width(struct xrdp_painter *self, const char *text);
+
+/* As above, but have a maximum Unicode character count for the string */
+int
+xrdp_painter_text_width_count(struct xrdp_painter *self,
+                              const char *text, unsigned int c32_count);
+
+/* Size of a string composed of a repeated number of Unicode characters */
+int
+xrdp_painter_repeated_char_width(struct xrdp_painter *self,
+                                 char32_t c32, unsigned int repeat_count);
+
 unsigned int
 xrdp_painter_font_body_height(const struct xrdp_painter *self);
 int
@@ -342,6 +359,11 @@ xrdp_painter_draw_text2(struct xrdp_painter *self,
                         int box_left, int box_top,
                         int box_right, int box_bottom,
                         int x, int y, char *data, int data_len);
+int
+xrdp_painter_draw_char(struct xrdp_painter *self,
+                       struct xrdp_bitmap *bitmap,
+                       int x, int y, char32_t chr,
+                       unsigned int repeat_count);
 int
 xrdp_painter_copy(struct xrdp_painter *self,
                   struct xrdp_bitmap *src,
@@ -375,6 +397,15 @@ xrdp_font_delete(struct xrdp_font *self);
 int
 xrdp_font_item_compare(struct xrdp_font_char *font1,
                        struct xrdp_font_char *font2);
+/**
+ * Gets a checked xrdp_font_char from a font
+ * @param f Font
+ * @param c32 Unicode codepoint
+ */
+#define XRDP_FONT_GET_CHAR(f, c32) \
+    (((unsigned int)(c32) >= ' ') && ((unsigned int)(c32) < (f)->char_count) \
+     ? ((f)->chars + (unsigned int)(c32)) \
+     : (f)->default_char)
 
 /* funcs.c */
 int
@@ -388,13 +419,7 @@ rect_contained_by(struct xrdp_rect *in1, int left, int top,
 int
 check_bounds(struct xrdp_bitmap *b, int *x, int *y, int *cx, int *cy);
 int
-add_char_at(char *text, int text_size, twchar ch, int index);
-int
-remove_char_at(char *text, int text_size, int index);
-int
 set_string(char **in_str, const char *in);
-int
-wchar_repeat(twchar *dest, int dest_size_in_wchars, twchar ch, int repeat);
 
 /* in lang.c */
 struct xrdp_key_info *
@@ -405,7 +430,7 @@ int
 get_keysym_from_scan_code(int device_flags, int scan_code, int *keys,
                           int caps_lock, int num_lock, int scroll_lock,
                           struct xrdp_keymap *keymap);
-twchar
+char32_t
 get_char_from_scan_code(int device_flags, int scan_code, int *keys,
                         int caps_lock, int num_lock, int scroll_lock,
                         struct xrdp_keymap *keymap);
@@ -519,6 +544,13 @@ int
 server_set_pointer_large(struct xrdp_mod *mod, int x, int y,
                          char *data, char *mask, int bpp,
                          int width, int height);
+int
+server_paint_rects_ex(struct xrdp_mod *mod, int num_drects, short *drects,
+                      int num_crects, short *crects,
+                      char *data, int left, int top,
+                      int width, int height,
+                      int flags, int frame_id,
+                      void *shmem_ptr, int shmem_bytes);
 int
 server_palette(struct xrdp_mod *mod, int *palette);
 int

@@ -27,8 +27,7 @@ AM_CPPFLAGS = \
   -DXRDP_SBIN_PATH=\"${sbindir}\" \
   -DXRDP_SHARE_PATH=\"${datadir}/xrdp\" \
   -DXRDP_PID_PATH=\"${localstatedir}/run\" \
-  -DXRDP_LOG_PATH=\"${localstatedir}/log\" \
-  -DXRDP_SOCKET_PATH=\"${socketdir}\"
+  -DXRDP_LOG_PATH=\"${localstatedir}/log\"
 
 if XRDP_NVENC
 AM_CPPFLAGS += -DXRDP_NVENC
@@ -72,6 +71,7 @@ libcommon_la_SOURCES = \
   thread_calls.h \
   trans.c \
   trans.h \
+  unicode_defines.h \
   $(PIXMAN_SOURCES)
 
 libcommon_la_LIBADD = \

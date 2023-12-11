@@ -47,10 +47,14 @@ struct xrdp_enc_data
     int pad1;
     short *crects;     /* 4 * num_crects */
     char *data;
+    int left;
+    int top;
     int width;
     int height;
     int flags;
     int frame_id;
+    void *shmem_ptr;
+    int shmem_bytes;
 };
 
 typedef struct xrdp_enc_data XRDP_ENC_DATA;
